@@ -84,6 +84,7 @@ for epoch in range(start_epoch, opt.niter + opt.niter_decay + 1):
         ############## Display results and errors ##########
         ### print out errors
         if total_steps % opt.print_freq == print_delta:
+            print(loss_dict)
             errors = {k: v.data[0] if not isinstance(v, int) else v for k, v in loss_dict.items()}
             t = (time.time() - iter_start_time) / opt.batchSize
             visualizer.print_current_errors(epoch, epoch_iter, errors, t)
